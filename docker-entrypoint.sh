@@ -17,8 +17,8 @@ if [ "$(stat --format "%Y" "${JIRA_INSTALL}/conf/server.xml")" -eq "0" ]; then
     xmlstarlet ed --inplace --pf --ps --update '//Context/@path' --value "${X_PATH}" "${JIRA_INSTALL}/conf/server.xml"
   fi
   if [ -n "$CONNECTOR_SECURE" ]; then
-    xmlstarlet ed --inplace --delete "/Server/Service/Connector/@secure" conf/server.xml
-    xmlstarlet ed --inplace --insert "/Server/Service/Connector" --type attr -n secure -v $CONNECTOR_SECURE conf/server.xml
+    xmlstarlet ed --inplace --delete "/Server/Service/Connector/@secure" "${JIRA_INSTALL}/conf/server.xml"
+    xmlstarlet ed --inplace --insert "/Server/Service/Connector" --type attr -n secure -v $CONNECTOR_SECURE "${JIRA_INSTALL}/conf/server.xml"
   fi
 fi
 
